@@ -3,48 +3,82 @@
 <head>
   <meta charset="UTF-8">
   <title>Jack Keaveny | Data Science Portfolio</title>
+
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
+                   Oxygen, Ubuntu, Cantarell, sans-serif;
       max-width: 900px;
-      margin: 40px auto;
+      margin: 50px auto;
       padding: 0 20px;
-      line-height: 1.6;
+      background: #f8f9fb;
+      color: #222;
+      line-height: 1.7;
     }
+
     header {
       text-align: center;
-      margin-bottom: 50px;
+      margin-bottom: 60px;
     }
+
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 5px;
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      font-weight: 700;
     }
+
     h2 {
-      margin-top: 40px;
-      font-size: 1.6rem;
+      margin-top: 50px;
+      font-size: 1.7rem;
+      border-bottom: 2px solid #e5e5e5;
+      padding-bottom: 8px;
     }
+
+    .contact {
+      margin-top: 15px;
+      font-size: 1rem;
+    }
+
+    .contact a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
     .project-list {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 25px;
     }
+
     .project {
-      border: 1px solid #e5e5e5;
-      padding: 20px;
-      border-radius: 10px;
-      transition: box-shadow 0.2s ease;
+      background: white;
+      border-radius: 12px;
+      padding: 20px 25px;
+      border: 1px solid #e3e3e3;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
+
     .project:hover {
-      box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
     }
-    a {
-      color: black;
+
+    .project a {
+      color: #000;
       text-decoration: none;
+      font-size: 1.25rem;
       font-weight: bold;
     }
-    a:hover {
+
+    .project a:hover {
       text-decoration: underline;
     }
+
     .desc {
       margin-top: 8px;
       color: #555;
@@ -58,24 +92,44 @@
 <header>
   <h1>Jack Keaveny</h1>
   <p>Data Science • Machine Learning • Analytics</p>
+
+  <div class="contact">
+    <p>Email: <a href="mailto:jk3v66@gmail.com">jk3v66@gmail.com</a></p>
+    <p>Phone: <a href="tel:4342491002">434-249-1002</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/jack-keaveny-15812b267" target="_blank">linkedin.com/in/jack-keaveny</a></p>
+  </div>
 </header>
+
+<h2>About Me</h2>
+<p>
+I’m a data scientist with experience in machine learning, statistical modeling, 
+and end-to-end analytics. I enjoy building models, exploring messy datasets, and 
+turning complex problems into actionable insights. I’ve worked on projects across 
+machine learning, time series forecasting, recommendation systems, and clustering, 
+and I’m passionate about applying data to real business decisions—especially in 
+tech and sports.
+</p>
 
 <h2>Projects</h2>
 <div id="projects" class="project-list"></div>
 
 <script>
+// Fetch repositories and filter
 fetch("https://api.github.com/users/jackkeaveny/repos")
   .then(res => res.json())
   .then(repos => {
     const list = document.getElementById("projects");
+
     repos
       .filter(r => !r.fork) // ignore forks
+      .filter(r => r.name !== "jackkeaveny.github.io") // exclude the website repo
+      .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at)) // newest first
       .forEach(repo => {
         const div = document.createElement("div");
         div.className = "project";
         div.innerHTML = `
           <a href="${repo.html_url}" target="_blank">${repo.name}</a>
-          <div class="desc">${repo.description || "No description provided"}</div>
+          <div class="desc">${repo.description || "No description provided."}</div>
         `;
         list.appendChild(div);
       });
