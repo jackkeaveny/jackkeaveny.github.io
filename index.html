@@ -1,191 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Jack Keaveny | Data Science Portfolio</title>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jack Keaveny – Portfolio</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <style>
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      max-width: 1100px;
-      margin: 50px auto;
-      padding: 0 20px;
-      background: #f5f7fa;
-      color: #222;
-      line-height: 1.7;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+      color: #f0f0f0;
     }
 
     header {
+      padding: 60px 20px;
       text-align: center;
-      margin-bottom: 60px;
+      animation: fadeIn 1.5s ease;
     }
 
     h1 {
       font-size: 3rem;
       margin-bottom: 10px;
-      font-weight: 700;
     }
 
-    h2 {
-      margin-top: 50px;
+    p.intro {
+      max-width: 750px;
+      margin: 0 auto;
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .contact-icons {
+      margin-top: 20px;
       font-size: 1.8rem;
-      border-bottom: 2px solid #e5e5e5;
-      padding-bottom: 8px;
     }
 
-    .contact {
-      margin-top: 15px;
-      font-size: 1rem;
+    .contact-icons a {
+      color: #4da6ff;
+      margin: 0 15px;
+      transition: 0.3s;
     }
 
-    .contact a {
-      color: #0066cc;
-      text-decoration: none;
+    .contact-icons a:hover {
+      color: #80c1ff;
+      transform: scale(1.2);
     }
 
     .skills {
-      background: white;
-      padding: 20px;
+      max-width: 900px;
+      margin: 50px auto;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px 30px;
       border-radius: 10px;
-      margin-top: 20px;
-      border: 1px solid #ddd;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+      animation: slideUp 1.2s ease;
     }
 
-    .skill-tag {
-      background: #eef2f7;
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 0.9rem;
+    .skills h2 {
+      text-align: center;
+      margin-bottom: 15px;
     }
 
-    .project-list {
+    .skills-list {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-      gap: 30px;
-      margin-top: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      text-align: center;
+      font-size: 1.1rem;
     }
 
-    .project {
-      background: white;
+    .projects {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 10px 20px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.08);
       border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid #e3e3e3;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-      transition: transform .15s ease, box-shadow .15s ease;
+      padding: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeIn 1.2s ease;
     }
 
-    .project:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
     }
 
-    .project img {
+    .project-card img {
       width: 100%;
-      height: 180px;
+      height: 160px;
       object-fit: cover;
-      background: #ddd;
+      border-radius: 8px;
     }
 
-    .project a {
-      color: #000;
-      text-decoration: none;
-      font-size: 1.25rem;
-      font-weight: bold;
-    }
-
-    .content {
-      padding: 20px;
-    }
-
-    .desc {
-      margin-top: 8px;
-      color: #555;
-      font-size: 0.95rem;
-    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(30px);} to {opacity:1; transform:translateY(0);} }
   </style>
 </head>
-
 <body>
 
 <header>
   <h1>Jack Keaveny</h1>
-  <p>Data Science • Machine Learning • Analytics</p>
+  <p class="intro">
+    Data Scientist and Analyst with experience in machine learning, analytics, and data-driven problem solving.
+    Passionate about building tools, exploring complex datasets, and creating insights that power real decisions.
+  </p>
 
-  <div class="contact">
-    <p>Email: <a href="mailto:jk3v66@gmail.com">jk3v66@gmail.com</a></p>
-    <p>Phone: <a href="tel:4342491002">434-249-1002</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/jack-keaveny-15812b267" target="_blank">linkedin.com/in/jack-keaveny</a></p>
+  <div class="contact-icons">
+    <a href="mailto:jk3v66@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+    <a href="tel:4342491002"><i class="fa-solid fa-phone"></i></a>
+    <a href="https://www.linkedin.com/in/jack-keaveny-15812b267" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
   </div>
 </header>
 
-<h2>About Me</h2>
-<p>
-I’m a data scientist focused on machine learning, statistical modeling, and building 
-end-to-end analytical workflows. I enjoy turning complex datasets into clear insights, 
-and I’ve worked across time series forecasting, clustering, recommendation systems, 
-and predictive modeling.  
-</p>
+<section class="skills">
+  <h2>Skills</h2>
+  <div class="skills-list">
+    <div>Python</div><div>R</div><div>SQL</div><div>SAS</div><div>Power BI</div><div>Excel</div>
+    <div>Tableau</div><div>GCP</div><div>API Integration</div><div>Machine Learning</div>
+    <div>Business Analytics</div><div>Clustering</div><div>PCA</div><div>EDA</div><div>Data Visualization</div>
+  </div>
+</section>
 
-<p>
-My goal is to create meaningful business value and make a better world through data.
-</p>
-
-<h2>Skills</h2>
-<div class="skills">
-  <div class="skill-tag">Python</div>
-  <div class="skill-tag">R</div>
-  <div class="skill-tag">SQL</div>
-  <div class="skill-tag">SAS</div>
-  <div class="skill-tag">Power BI</div>
-  <div class="skill-tag">Excel</div>
-  <div class="skill-tag">Tableau</div>
-  <div class="skill-tag">GCP</div>
-  <div class="skill-tag">API Integration</div>
-  <div class="skill-tag">Machine Learning</div>
-  <div class="skill-tag">Business Analytics</div>
-  <div class="skill-tag">Clustering</div>
-  <div class="skill-tag">PCA</div>
-  <div class="skill-tag">EDA</div>
-  <div class="skill-tag">Data Visualization</div>
-  <div class="skill-tag"></div>
-  <div class="skill-tag">APIs</div>
-</div>
-
-<h2>Projects</h2>
-<div id="projects" class="project-list"></div>
+<section class="projects">
+  <h2 style="text-align:center; margin-bottom:25px;">Projects</h2>
+  <div id="projects" class="project-grid"></div>
+</section>
 
 <script>
-fetch("https://api.github.com/users/jackkeaveny/repos")
-  .then(res => res.json())
-  .then(repos => {
-    const list = document.getElementById("projects");
+  const username = "JackKeaveny";
 
-    repos
-      .filter(r => !r.fork)
-      .filter(r => r.name !== "jackkeaveny.github.io")
-      .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
-      .forEach(repo => {
-        const div = document.createElement("div");
-        div.className = "project";
+  fetch(`https://api.github.com/users/${username}/repos`)
+    .then(res => res.json())
+    .then(repos => {
+      const container = document.getElementById("projects");
 
-        // Thumbnail logic
-        const thumbnailURL =
-          `https://raw.githubusercontent.com/jackkeaveny/${repo.name}/main/thumbnail.png`;
+      repos
+        .filter(r => r.name !== "jackkeaveny.github.io")
+        .forEach(repo => {
+          const card = document.createElement("div");
+          card.className = "project-card";
 
-        div.innerHTML = `
-          <img src="${thumbnailURL}" onerror="this.src='https://via.placeholder.com/400x200?text=No+Image'" />
-          <div class="content">
-            <a href="${repo.html_url}" target="_blank">${repo.name}</a>
-            <div class="desc">${repo.description || "No description provided."}</div>
-          </div>
-        `;
+          const img = document.createElement("img");
+          img.src = `https://raw.githubusercontent.com/${username}/${repo.name}/main/thumbnail.png`;
+          img.onerror = () => { img.src = "https://via.placeholder.com/300x150?text=No+Thumbnail"; };
 
-        list.appendChild(div);
-      });
-  });
+          card.innerHTML = `
+            <h3>${repo.name}</h3>
+            <p>${repo.description || "No description available."}</p>
+            <a href="${repo.html_url}" target="_blank" style="color:#4da6ff;">View Repository</a>
+          `;
+
+          card.insertBefore(img, card.firstChild);
+          container.appendChild(card);
+        });
+    });
 </script>
 
 </body>
