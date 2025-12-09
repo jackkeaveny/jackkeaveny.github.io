@@ -6,12 +6,11 @@
 
   <style>
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
-                   Oxygen, Ubuntu, Cantarell, sans-serif;
-      max-width: 900px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      max-width: 1100px;
       margin: 50px auto;
       padding: 0 20px;
-      background: #f8f9fb;
+      background: #f5f7fa;
       color: #222;
       line-height: 1.7;
     }
@@ -22,14 +21,14 @@
     }
 
     h1 {
-      font-size: 2.8rem;
+      font-size: 3rem;
       margin-bottom: 10px;
       font-weight: 700;
     }
 
     h2 {
       margin-top: 50px;
-      font-size: 1.7rem;
+      font-size: 1.8rem;
       border-bottom: 2px solid #e5e5e5;
       padding-bottom: 8px;
     }
@@ -44,28 +43,50 @@
       text-decoration: none;
     }
 
-    .contact a:hover {
-      text-decoration: underline;
+    .skills {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      border: 1px solid #ddd;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-tag {
+      background: #eef2f7;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.9rem;
     }
 
     .project-list {
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
     }
 
     .project {
       background: white;
       border-radius: 12px;
-      padding: 20px 25px;
+      overflow: hidden;
       border: 1px solid #e3e3e3;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+      transition: transform .15s ease, box-shadow .15s ease;
     }
 
     .project:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+
+    .project img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      background: #ddd;
     }
 
     .project a {
@@ -75,8 +96,8 @@
       font-weight: bold;
     }
 
-    .project a:hover {
-      text-decoration: underline;
+    .content {
+      padding: 20px;
     }
 
     .desc {
@@ -102,35 +123,61 @@
 
 <h2>About Me</h2>
 <p>
-I’m a data scientist with experience in machine learning, statistical modeling, 
-and end-to-end analytics. I enjoy building models, exploring messy datasets, and 
-turning complex problems into actionable insights. I’ve worked on projects across 
-machine learning, time series forecasting, recommendation systems, and clustering, 
-and I’m passionate about applying data to real business decisions—especially in 
-tech and sports.
+I’m a data scientist focused on machine learning, statistical modeling, and building 
+end-to-end analytical workflows. I enjoy turning complex datasets into clear insights, 
+and I’ve worked across time series forecasting, clustering, recommendation systems, 
+and predictive modeling.  
 </p>
+
+<p>
+My goal is to build data products that create measurable business value — whether through 
+automation, improved decision-making, or deeper analytical understanding.  
+</p>
+
+<h2>Skills</h2>
+<div class="skills">
+  <div class="skill-tag">Python</div>
+  <div class="skill-tag">R</div>
+  <div class="skill-tag">SQL</div>
+  <div class="skill-tag">Machine Learning</div>
+  <div class="skill-tag">Time Series</div>
+  <div class="skill-tag">Clustering</div>
+  <div class="skill-tag">PCA</div>
+  <div class="skill-tag">EDA</div>
+  <div class="skill-tag">Visualization</div>
+  <div class="skill-tag">Git</div>
+  <div class="skill-tag">APIs</div>
+</div>
 
 <h2>Projects</h2>
 <div id="projects" class="project-list"></div>
 
 <script>
-// Fetch repositories and filter
 fetch("https://api.github.com/users/jackkeaveny/repos")
   .then(res => res.json())
   .then(repos => {
     const list = document.getElementById("projects");
 
     repos
-      .filter(r => !r.fork) // ignore forks
-      .filter(r => r.name !== "jackkeaveny.github.io") // exclude the website repo
-      .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at)) // newest first
+      .filter(r => !r.fork)
+      .filter(r => r.name !== "jackkeaveny.github.io")
+      .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
       .forEach(repo => {
         const div = document.createElement("div");
         div.className = "project";
+
+        // Thumbnail logic
+        const thumbnailURL =
+          `https://raw.githubusercontent.com/jackkeaveny/${repo.name}/main/thumbnail.png`;
+
         div.innerHTML = `
-          <a href="${repo.html_url}" target="_blank">${repo.name}</a>
-          <div class="desc">${repo.description || "No description provided."}</div>
+          <img src="${thumbnailURL}" onerror="this.src='https://via.placeholder.com/400x200?text=No+Image'" />
+          <div class="content">
+            <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+            <div class="desc">${repo.description || "No description provided."}</div>
+          </div>
         `;
+
         list.appendChild(div);
       });
   });
